@@ -1,0 +1,35 @@
+*** Begin Patch
+*** Update File: c:\Users\tonyf\Documents\test\demo\pom.xml
+@@
+ 		<!-- JPA -->
+ 		<dependency>
+ 			<groupId>org.springframework.boot</groupId>
+ 			<artifactId>spring-boot-starter-data-jpa</artifactId>
+ 		</dependency>
+
+		<!-- Web (for @RestController, mappings, etc.) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+*** End Patch
+
+*** Begin Patch
+*** Update File: c:\Users\tonyf\Documents\test\demo\frontend\src\pages\Jobs.jsx
+@@
+import React, { useState, useMemo, useEffect } from 'react'
+
+// Use Vite env var for API base, falling back to localhost:8080
+const API = import.meta.env.VITE_API_BASE || 'http://localhost:8080'
+@@
+        const res = await fetch(`${API}/api/jobs`)
+@@
+      const res = await fetch(`${API}/api/jobs`, {
+@@
+                        const res = await fetch(`${API}/api/jobs/${j.id}`, {
+*** End Patch
+
+*** Begin Patch
+*** Add File: c:\Users\tonyf\Documents\test\demo\frontend\.env.development
++VITE_API_BASE=http://localhost:8080
+*** End Patch
